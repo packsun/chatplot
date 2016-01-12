@@ -1,6 +1,6 @@
 # Chatplot
 
-Chatplot is a simple Python script for both Twitch viewers and streamers to easily locate highlights within a livestream.
+Chatplot is a simple Python script for both Twitch.tv viewers and streamers to easily locate highlights within a livestream.
 Users input a channel to observe, as well as the maximum amount of time to watch the channel continuously. An IRC bot then
 records the number of chat messages per minute until the time is reached (or the stream goes offline). The data is used to
 generate a histogram and print the nine most active minutes.
