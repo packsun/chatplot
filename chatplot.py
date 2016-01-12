@@ -4,27 +4,6 @@ import socket, string, json, urllib2, threading, time, numpy
 import matplotlib.pyplot as plt
 import numpy as np
 
-def getJSON():
-	return json.load(urllib2.urlopen('https://api.twitch.tv/kraken/streams/' + USER))
-
-def validTime():
-	time = raw_input("Max time in minutes: ")
-	if time == "":
-		return 0
-	try:
-		time = int(time)
-		if time <= 0:
-			print "Time limit must be a positive integer."
-			return validTime()
-		else:
-			return time
-	except:
-		print "Time limit must be in numerical form."
-		return validTime()
-
-def sendMessage(message):
-	s.send("PRIVMSG #" + USER + " :" + message + "\r\n")
-
 def observeStream(readbuffer="", MODT=False, time=0):
 	chatlog = [[], []]
 	prev = startTime
@@ -97,6 +76,24 @@ def timeHelper(x):
 	else:
 		return str(x)
 
+def getJSON():
+	return json.load(urllib2.urlopen('https://api.twitch.tv/kraken/streams/' + USER))
+
+def validTime():
+	time = raw_input("Max time in minutes: ")
+	if time == "":
+		return 0
+	try:
+		time = int(time)
+		if time <= 0:
+			print "Time limit must be a positive integer."
+			return validTime()
+		else:
+			return time
+	except:
+		print "Time limit must be in numerical form."
+		return validTime()
+
 
 HOST = "irc.twitch.tv"
 NICK = "chatplot"
@@ -141,14 +138,3 @@ plt.xlabel('Timestamp in minutes')
 plt.ylabel('Number of chat messages')
 plt.title(title + "\ntwitch.tv/" + USER + " on " + creationTime.strftime("%b %d, %Y"))
 plt.show()
-
-
-
-
-
-
-
-
-
-
-
