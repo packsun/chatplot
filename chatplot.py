@@ -86,7 +86,7 @@ def validTime():
 	try:
 		time = int(time)
 		if time <= 0:
-			print "Time limit must be a positive integer."
+			print "Time limit must be a positive integer or empty string."
 			return validTime()
 		else:
 			return time
